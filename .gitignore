@@ -1,0 +1,3 @@
+work/data/inbox/*.parquet
+.ipynb_checkpoints/
+.DS_Store
