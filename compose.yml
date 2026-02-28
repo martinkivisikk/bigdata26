@@ -1,5 +1,5 @@
 services:
-  week01:
+  notebook:
     image: quay.io/jupyter/pyspark-notebook:2025-12-31
     ports:
       - "8888:8888"
