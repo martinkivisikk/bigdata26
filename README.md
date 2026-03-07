@@ -27,3 +27,20 @@ Rows are deduplicated on the following business key, which uniquely identifies a
 ```python
 (VendorID, pickup_ts, dropoff_ts, PULocationID, DOLocationID)
 ```
+
+## Custom Scenario
+
+In addition to the enriched trip dataset, the pipeline produces an aggregated view of taxi flows between boroughs.
+
+The dataset `borough_flows.parquet` summarizes trips by:
+
+- `pickup_borough`
+- `dropoff_borough`
+- `pickup_year_month`
+
+For each borough pair and month the pipeline computes:
+
+- `trip_count` – total number of trips
+- `avg_trip_distance` – average trip distance
+
+Example observation: the dominant flow in the dataset is **Manhattan → Manhattan** with more than 2.8 million trips which indicates that most yellow taxi trips occur within Manhattan rather than between boroughs.
