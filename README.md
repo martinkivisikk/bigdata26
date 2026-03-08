@@ -83,9 +83,12 @@ The full job runs for about 40-50 seconds.
 ### Spark Web UI screenshots
 
 1. Total job/stage time
+
 ![Spark UI Jobs tab](images/spark_ui_jobs_duration.png)
 
 2. Shuffle read/write (or spill) for the join or aggregation stage
+
+![Spark UI Jobs tab](images/spark_ui_shuffle.png)
 
 
 ### Optimization choices
