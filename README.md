@@ -9,9 +9,53 @@ work/data/inbox/
     *.parquet
 ```
 
-## Transformations
+A manifest file is used for saving state (state/manifest.json). It tracks the following:
 
-### Cleaning Rules
+- which files have been processed;
+- file name, path, size in bytes, row count, processed at time
+- last run time
+- total output rows
+
+## Correctness
+
+### Row counts
+| Stage | Count |
+|---|------|
+| Input | 7052769 |
+| Cleaning | 6856248 |
+| Dedup | 6762446 |
+| Output | 6762446 |
+
+### Examples of bad rows
+
+#### 1. Invalid Trip Duration (Remove rows)
+
+Trips where the dropoff timestamp is not later than the pickup timestamp are invalid.
+
+
+| VendorID | pickup_ts           | dropoff_ts          | trip_distance | total_amount |
+| -------- | ------------------- | ------------------- | ------------- | ------------ |
+| 1        | 2025-01-01 00:49:48 | 2025-01-01 00:49:48 | 0.0           | 20.06        |
+
+#### 2. Invalid Trip Distance (Remove rows)
+
+Trips with zero or negative trip distance are considered invalid.
+
+| VendorID | pickup_ts           | dropoff_ts          | trip_distance | fare_amount |
+| -------- | ------------------- | ------------------- | ------------- | ----------- |
+| 2        | 2025-01-01 00:37:43 | 2025-01-01 00:37:53 | 0.0           | 12.0        |
+
+
+#### 3. Invalid Passenger Count (Replace with NULL)
+
+Passenger counts outside the expected range (1-8) are considered invalid.
+
+| VendorID | pickup_ts           | dropoff_ts          | passenger_count | trip_distance |
+| -------- | ------------------- | ------------------- | --------------- | ------------- |
+| 1        | 2025-01-01 00:14:47 | 2025-01-01 00:16:15 | 0               | 0.4           |
+
+
+### Cleaning rules
 
 | # | Rule |
 |---|------|
@@ -27,6 +71,20 @@ Rows are deduplicated on the following business key, which uniquely identifies a
 ```python
 (VendorID, pickup_ts, dropoff_ts, PULocationID, DOLocationID)
 ```
+
+## Performance
+
+### Runtime
+
+### Spark Web UI screenshots
+
+1. Total job/stage time
+2. Shuffle read/write (or spill) for the join or aggregation stage
+
+### Optimization choices
+
+What did we try, what changed
+
 
 ## Custom Scenario
 
