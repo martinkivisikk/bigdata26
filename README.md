@@ -100,7 +100,7 @@ It's benefits might be probably seen in a multi-node setup, where the network ov
 2. Removing unnecessary columns from data *in the beginning, during ingestion phase*, which lightened the processing load for the entire pipeline. This change cut the total execution time around 20s. By removing unused fields early, we ensured the cleaning and merging steps operated only on relevant data.
 Screenshot of performance without removing unnecessary columns (can be compared to the performance screenshot above) :
 
-![Performance no pruning](images/with_unnecessary columns.png)
+![Performance no pruning](images/with_unnecessary_columns.png)
 
 
 ## Custom Scenario
