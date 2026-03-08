@@ -78,7 +78,7 @@ Rows are deduplicated on the following business key, which uniquely identifies a
 
 ![Runtime screenshot](images/project_01_runtime.png)
 
-The full job runs for about 40-50 seconds.
+The full job runs for about 1m on a HP laptop provided by the University.
 
 ### Spark Web UI screenshots
 
@@ -97,7 +97,7 @@ What did we try, what changed?
 
 1. Broadcasting the lookup table in the join. We compared the impact of a Broadcast Join against a standard Shuffle Join and observed basically no difference in local runtime (both around 50s). 
 It's benefits might be probably seen in a multi-node setup, where the network overhead would have had negative impact on standard shuffle join performance. 
-2. Removing unnecessary columns from data *in the beginning, during ingestion phase*, which lightened the processing load for the entire pipeline. This change cut the total execution time from more than a minute down to around 40-50 seconds. By removing unused fields early, we ensured the cleaning and merging steps operated only on relevant data.
+2. Removing unnecessary columns from data *in the beginning, during ingestion phase*, which lightened the processing load for the entire pipeline. This change cut the total execution time around 10s. By removing unused fields early, we ensured the cleaning and merging steps operated only on relevant data.
 
 
 ## Custom Scenario
