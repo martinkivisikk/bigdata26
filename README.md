@@ -116,12 +116,15 @@ Example observation: the dominant flow in the dataset is **Manhattan → Manhatt
 ## Example runs
 
 1. First run with initial input files `yellow_tripdata_2025-01` and `yellow_tripdata_2025-02`
+
 ![First run](images/ex_first_run.png)
 
 
 2. Second run with same files in inbox
+
 ![Second run](images/ex_second_run.png)
 
 
 3. Third run with a new file `yellow_tripdata_2025-03` (process only the new file)
+
 ![Third run](images/ex_third_run.png)
