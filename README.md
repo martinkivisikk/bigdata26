@@ -76,14 +76,24 @@ Rows are deduplicated on the following business key, which uniquely identifies a
 
 ### Runtime
 
+![Runtime screenshot](images/project_01_runtime.png)
+
+The full job runs for about 40-50 seconds.
+
 ### Spark Web UI screenshots
 
 1. Total job/stage time
+![Spark UI Jobs tab](images/spark_ui_jobs_duration.png)
+
 2. Shuffle read/write (or spill) for the join or aggregation stage
+
 
 ### Optimization choices
 
-What did we try, what changed
+What did we try, what changed?
+
+1. Broadcasting the lookup table in the join. In this case and a single test run, there was no real difference.
+2. 
 
 
 ## Custom Scenario
@@ -102,3 +112,16 @@ For each borough pair and month the pipeline computes:
 - `avg_trip_distance` – average trip distance
 
 Example observation: the dominant flow in the dataset is **Manhattan → Manhattan** with more than 2.8 million trips which indicates that most yellow taxi trips occur within Manhattan rather than between boroughs.
+
+## Example runs
+
+1. First run with initial input files `yellow_tripdata_2025-01` and `yellow_tripdata_2025-02`
+![First run](images/ex_first_run.png)
+
+
+2. Second run with same files in inbox
+![Second run](images/ex_second_run.png)
+
+
+3. Third run with a new file `yellow_tripdata_2025-03` (process only the new file)
+![Third run](images/ex_third_run.png)
