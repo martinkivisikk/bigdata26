@@ -118,7 +118,7 @@ For each borough pair and month the pipeline computes:
 - `trip_count` – total number of trips
 - `avg_trip_distance` – average trip distance
 
-Example observation: the dominant flow in the dataset is **Manhattan → Manhattan** with more than 2.8 million trips which indicates that most yellow taxi trips occur within Manhattan rather than between boroughs.
+Example observation: the dominant flow in the dataset is **Manhattan → Manhattan** with more than 2.8 million monthly trips which indicates that most yellow taxi trips occur within Manhattan rather than between boroughs.
 
 ## Example runs
 
