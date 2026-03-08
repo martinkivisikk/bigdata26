@@ -1,2 +1,22 @@
 {
+  "processed_files": {
+    "yellow_tripdata_2025-01.parquet": {
+      "filename": "yellow_tripdata_2025-01.parquet",
+      "filepath": "data/inbox/yellow_tripdata_2025-01.parquet",
+      "size_bytes": 59158238,
+      "mtime": 1772270336.9195912,
+      "row_count": 0,
+      "processed_at": "2026-03-08T12:55:26.194998+00:00"
+    },
+    "yellow_tripdata_2025-02.parquet": {
+      "filename": "yellow_tripdata_2025-02.parquet",
+      "filepath": "data/inbox/yellow_tripdata_2025-02.parquet",
+      "size_bytes": 60343086,
+      "mtime": 1772971389.7234437,
+      "row_count": 0,
+      "processed_at": "2026-03-08T12:55:26.194998+00:00"
+    }
+  },
+  "last_run": "2026-03-08T12:55:26.194998+00:00",
+  "total_output_rows": 6762446
 }

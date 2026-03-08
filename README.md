@@ -19,12 +19,12 @@ A manifest file is used for saving state (state/manifest.json). It tracks the fo
 ## Correctness
 
 ### Row counts
-| Stage | Count |
-|---|------|
-| Input | 7052769 |
-| Cleaning | 6856248 |
-| Dedup | 6762446 |
-| Output | 6762446 |
+| Stage               | Count |
+|---------------------|------|
+| Input               | 7052769 |
+| After cleaning      | 6856248 |
+| After deduplication | 6762446 |
+| Output              | 6762446 |
 
 ### Examples of bad rows
 
@@ -95,8 +95,9 @@ The full job runs for about 40-50 seconds.
 
 What did we try, what changed?
 
-1. Broadcasting the lookup table in the join. In this case and a single test run, there was no real difference.
-2. 
+1. Broadcasting the lookup table in the join. We compared the impact of a Broadcast Join against a standard Shuffle Join and observed basically no difference in local runtime (both around 50s). 
+It's benefits might be probably seen in a multi-node setup, where the network overhead would have had negative impact on standard shuffle join performance. 
+2. Removing unnecessary columns from data *in the beginning, during ingestion phase*, which lightened the processing load for the entire pipeline. This change cut the total execution time from more than a minute down to around 40-50 seconds. By removing unused fields early, we ensured the cleaning and merging steps operated only on relevant data.
 
 
 ## Custom Scenario

@@ -1,5 +1,4 @@
 work/data/inbox/*.parquet
-work/data/outbox/*.parquet
 .ipynb_checkpoints/
 .DS_Store
 .venv
